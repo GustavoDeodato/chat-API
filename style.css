@@ -3,18 +3,26 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
+
 main{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: blueviolet;
     display: flex;
+    justify-content: start;
+    
 }
 .lateral{
     display: flex;
+    width: 30%;
+    height: 100%;
+    background-color: aqua;
+    
+    
+}
+
+.contato{
+    width: 100%;
+    height: 10vh;
+    background-color: brown;
 }
