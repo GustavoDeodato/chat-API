@@ -15,7 +15,7 @@ body, html {
     width: 100%;
 }
 
-/* Sidebar */
+
 .sidebar {
     width: 30%;
     background-color: #202c33;
@@ -65,7 +65,7 @@ body, html {
     background-color: #2a3942;
 }
 
-/* Chat Area */
+
 .chat-area {
     width: 70%;
     background-color: #2a3942;
@@ -83,7 +83,7 @@ body, html {
     gap: 10px;
 }
 
-/* Mensagens estilo WhatsApp */
+
 .mensagens p {
     max-width: 60%;
     padding: 10px 15px;
@@ -104,7 +104,7 @@ body, html {
     background-color: #ffffff;
 }
 
-/* Input Area */
+
 .input-area {
     display: flex;
     padding: 10px;
