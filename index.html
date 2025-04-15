@@ -8,22 +8,23 @@
     <title>Whatsapp</title>
 </head>
 <body>
-    <main>
-        <div class="lateral">
-            <div>Conversas</div>
-                <div class="search-bar">
-                    <img src="./img/lupa.png" alt="">
-                    <input type="text" placeholder="pesquisar">
-                </div>
-
-                <div class="conversas"></div>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="user-input">
+                <input type="text" id="numeroUsuario" placeholder="Digite seu número com DDD" />
+                <button onclick="carregarConversas()">Buscar</button>
+            </div>
+            <div id="listaContatos" class="lista-contatos"></div>
         </div>
 
-        <div class="chat">
-            <div class="contato"></div>
-            <div class="container-conversa"></div>
-            <div class="digitar"></div>
+        <div class="chat-area">
+            <div id="mensagens" class="mensagens"></div>
+
+            <div class="input-area">
+                <input type="text" id="mensagemInput" placeholder="Digite uma mensagem" disabled />
+                <button id="btnEnviar" disabled>Enviar</button>
+            </div>
         </div>
-    </main>
+    </div>
 </body>
 </html>

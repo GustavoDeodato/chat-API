@@ -1,14 +1,57 @@
 "use scrict"
 
-async function Chat(){
+let numeroAtual = ''
+let contatoAtual = null
 
-    const container = document.getElementById('container-conversas')
+async function carregarConversas() {
+    numeroAtual = document.getElementById('numeroUsuario').value.trim()
+    if (!numeroAtual) {
+        alert('Digite um número válido')
+        return
+    }
 
-    const response = await fetch ("http://localhost:8080/v1/whatssap/usuario/conversas/11987876567")
-    const data = await response.json
-    const conversa = data.data
+    try {
+        const resposta = await fetch(`http://localhost:8080/v1/whatssap/usuario/conversas/${numeroAtual}`)
+        const dados = await resposta.json()
 
-    conversa.forEach(
-        
-    )
+        mostrarContatos(dados)
+        document.getElementById('mensagens').replaceChildren("")
+        contatoAtual = null
+        document.getElementById('mensagemInput').disabled = true
+        document.getElementById('btnEnviar').disabled = true
+    } catch (erro) {
+        alert('Erro ao buscar as conversas')
+        console.error(erro)
+    }
 }
+
+function mostrarContatos(conversas) {
+    const lista = document.getElementById('listaContatos')
+    lista.replaceChildren("")
+
+    conversas.forEach(contato => {
+        const div = document.createElement('div')
+        div.className = 'contato'
+        div.textContent = contato.nome
+        div.onclick = () => {
+            mostrarMensagens(contato)
+            contatoAtual = contato.nome
+            document.getElementById('mensagemInput').disabled = false
+            document.getElementById('btnEnviar').disabled = false
+        }
+        lista.appendChild(div)
+    })
+}
+
+function mostrarMensagens(contato) {
+    const mensagensDiv = document.getElementById('mensagens')
+    mensagensDiv.replaceChildren("")
+
+    contato.conversas.forEach(msg => {
+        const p = document.createElement('p')
+        p.textContent = `[${msg.time}] ${msg.content}`
+        mensagensDiv.appendChild(p)
+    })
+}
+
+carregarConversas()
